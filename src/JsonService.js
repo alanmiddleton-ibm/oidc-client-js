@@ -6,8 +6,8 @@ import { Global } from './Global.js';
 
 export class JsonService {
     constructor(
-        additionalContentTypes = null, 
-        XMLHttpRequestCtor = Global.XMLHttpRequest, 
+        additionalContentTypes = null,
+        XMLHttpRequestCtor = Global.XMLHttpRequest,
         jwtHandler = null
     ) {
         if (additionalContentTypes && Array.isArray(additionalContentTypes))
@@ -107,6 +107,7 @@ export class JsonService {
         return new Promise((resolve, reject) => {
 
             var req = new this._XMLHttpRequest();
+            req.withCredentials = true;
             req.open('POST', url);
 
             var allowedContentTypes = this._contentTypes;
